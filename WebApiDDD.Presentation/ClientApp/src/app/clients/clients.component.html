@@ -1,0 +1,29 @@
+<h1>Clients</h1>
+
+<p *ngIf="!(clients$ | async)"><em>Loading...</em></p>
+<p>
+  <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New client</a>
+</p>
+
+<table class="table table-sm table-hover" *ngIf="(clients$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of (clients$ | async)">
+      <td>{{ client.id }}</td>
+      <td><a [routerLink]="['/client/', client.id]">{{ client.nome }}</a></td>
+      <td>{{ client.sobrenome }}</td>
+      <td>{{ client.email }}</td>
+      <td><a [routerLink]="['/client/edit/', client.id]" class="btn btn-primary btn-sm float-right">Edit</a></td>
+      <td><a [routerLink]="" (click)="delete(client.id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

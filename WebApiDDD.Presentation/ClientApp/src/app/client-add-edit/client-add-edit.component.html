@@ -1,0 +1,35 @@
+<h1>{{actionType}} client</h1>
+
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Nome</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="nome">
+    </div>
+    <span class="text-danger ml-3" *ngIf="nome.invalid && formDir.submitted">
+      Nome is required.
+    </span>
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Sobrenome</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="sobrenome">
+    </div>
+    <span class="text-danger ml-3" *ngIf="sobrenome.invalid && formDir.submitted">
+      Sobrenome is required.
+    </span>
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Email</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="email">
+    </div>
+    <span class="text-danger ml-3" *ngIf="email.invalid && formDir.submitted">
+      Email is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success float-right">Save</button>
+    <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+  </div>
+</form>
